@@ -18,6 +18,7 @@ pages/
   gabriel.html          -> tema moody/minimalista
   yasmin.html           -> tema vintage academia
   ana.html              -> tema romântico
+  matheus.html          -> página de zoeira (não é uma memória, é uma piada)
   nao-encontrado.html   -> página exibida se o nome não corresponder
   css/*.css             -> estilo (cores e tipografia) de cada tema
   js/*.js                -> efeito visual exclusivo de cada página
@@ -65,9 +66,10 @@ Depois acesse `http://localhost:8000` no navegador.
 
 Na página inicial, quando a pessoa digita o nome, o texto é comparado
 (sem diferenciar maiúsculas/minúsculas e sem acentos) com: `maria`,
-`gabriel`, `yasmin`, `ana`. Se o nome digitado *contiver* uma dessas
-palavras, a pessoa é redirecionada para a página correspondente. Caso
-contrário, vê a página "não foi feita para você".
+`gabriel`, `yasmin`, `ana`, `matheus`. Se o nome digitado *contiver*
+uma dessas palavras, a pessoa é redirecionada para a página
+correspondente (no caso do Matheus, uma pegadinha). Caso contrário,
+vê a página "não foi feita para você".
 
 Para adicionar mais pessoas, edite `js/script.js` (array `routes`) e
 crie uma nova página em `pages/`.

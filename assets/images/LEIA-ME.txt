@@ -21,3 +21,7 @@ espaço reservado (ex: "FOTO 1").
 
 Formatos aceitos: .jpg, .jpeg, .png, .webp
 (se usar outro formato, atualize a extensão no HTML da página)
+
+EXTRA — página do Matheus (zoeira):
+  meme-matheus.jpg -> o meme que aparece na página dele
+  (essa página é só uma brincadeira, sem compromisso emocional)
