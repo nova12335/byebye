@@ -93,6 +93,7 @@ window.addEventListener('load', () => {
     { key: 'gabriel', page: 'pages/gabriel.html' },
     { key: 'yasmin',  page: 'pages/yasmin.html' },
     { key: 'ana',     page: 'pages/ana.html' },
+    { key: 'matheus',     page: 'pages/matheus.html' },
   ];
 
   function detectRoute(rawName){
