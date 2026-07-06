@@ -1,0 +1,16 @@
+COMO ADICIONAR A MÚSICA
+========================
+
+Coloque aqui o arquivo de áudio com o nome:
+
+  musica.mp3
+
+Ele será tocado automaticamente pelo player de música de cada
+página quando a pessoa clicar no botão de play.
+
+Assim como as fotos, cada página aponta para este mesmo arquivo.
+Para usar músicas diferentes por pessoa, troque o caminho
+"data-track" no HTML de cada página (procure a div com a
+classe "music-player").
+
+Formato recomendado: .mp3

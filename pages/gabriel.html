@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="css/gabriel.css">
+</head>
+<body>
+
+<div id="transition-veil"></div>
+<div id="progress-bar"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- ============ HERO ============ -->
+<header class="g-hero">
+  <img
+    class="g-hero-photo"
+    src="../assets/images/hero.jpg"
+    alt="Foto principal de Gabriel"
+    data-placeholder-label="FOTO PRINCIPAL — hero.jpg"
+    data-ratio="16/10"
+  >
+  <div class="g-hero-fade"></div>
+
+  <div class="g-hero-content" data-reveal="fade">
+    <p class="eyebrow">frequência baixa · luz verde</p>
+    <!-- TÍTULO -->
+    <h1 class="g-title">GABRIEL</h1>
+    <!-- SUBTÍTULO -->
+    <p class="g-subtitle">um som que só toca pra você</p>
+  </div>
+
+  <div class="g-scroll-cue">▾ scroll</div>
+</header>
+
+<!-- ============ TEXTO PRINCIPAL ============ -->
+<section class="section g-intro">
+  <div class="container g-intro-inner">
+    <span class="g-tag">00:01</span>
+    <p class="g-intro-text" data-reveal>
+      <!-- TEXTO PRINCIPAL -->
+      Escreva aqui o texto principal sobre o Gabriel: a vibe dele, o silêncio
+      confortável, os fones de ouvido, o jeito quieto e intenso. Troque este
+      texto por algo real.
+    </p>
+  </div>
+</section>
+
+<!-- ============ GALERIA ============ -->
+<section class="section g-gallery-section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">frames</p>
+      <h2 class="g-h2">cenas soltas</h2>
+    </div>
+
+    <div class="g-gallery">
+      <img src="../assets/images/foto1.jpg" alt="Foto 1 de Gabriel" class="g-g-item tall" data-lightbox data-placeholder-label="FOTO 1" data-ratio="3/4" data-reveal data-reveal-delay="1">
+      <img src="../assets/images/foto2.jpg" alt="Foto 2 de Gabriel" class="g-g-item" data-lightbox data-placeholder-label="FOTO 2" data-ratio="1/1" data-reveal data-reveal-delay="2">
+      <img src="../assets/images/foto3.jpg" alt="Foto 3 de Gabriel" class="g-g-item" data-lightbox data-placeholder-label="FOTO 3" data-ratio="1/1" data-reveal data-reveal-delay="3">
+      <img src="../assets/images/foto4.jpg" alt="Foto 4 de Gabriel" class="g-g-item tall" data-lightbox data-placeholder-label="FOTO 4" data-ratio="3/4" data-reveal data-reveal-delay="4">
+    </div>
+  </div>
+</section>
+
+<!-- ============ LINHA DO TEMPO ============ -->
+<section class="section g-timeline-section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">tracklist</p>
+      <h2 class="g-h2">linha do tempo</h2>
+    </div>
+
+    <!-- LINHA DO TEMPO -->
+    <ol class="g-timeline">
+      <li data-reveal><span class="g-tl-n">01</span><p>Descreva aqui o primeiro momento marcante.</p></li>
+      <li data-reveal><span class="g-tl-n">02</span><p>Descreva aqui o segundo momento marcante.</p></li>
+      <li data-reveal><span class="g-tl-n">03</span><p>Descreva aqui o terceiro momento marcante.</p></li>
+      <li data-reveal><span class="g-tl-n">04</span><p>Descreva aqui o momento mais recente.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ CARTÕES DE MEMÓRIA ============ -->
+<section class="section g-cards-section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">notas</p>
+      <h2 class="g-h2">fragmentos</h2>
+    </div>
+    <div class="g-cards">
+      <article class="g-card" data-reveal data-reveal-delay="1">
+        <h3>Frase favorita</h3>
+        <!-- FRASE FAVORITA -->
+        <p>"Escreva aqui uma frase marcante que o Gabriel diria."</p>
+      </article>
+      <article class="g-card" data-reveal data-reveal-delay="2">
+        <h3>Um som</h3>
+        <p>Escreva aqui uma música ou som que lembra ele.</p>
+      </article>
+      <article class="g-card" data-reveal data-reveal-delay="3">
+        <h3>Uma cena</h3>
+        <p>Escreva aqui um momento despretensioso que marcou vocês.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÚSICA (CASSETE) ============ -->
+<section class="section g-music-section">
+  <div class="container g-music-inner" data-reveal>
+    <p class="eyebrow">lado A</p>
+    <h2 class="g-h2">aperte o play</h2>
+
+    <!-- MÚSICA -->
+    <div class="cassette music-player" data-track="../assets/music/musica.mp3">
+      <div class="cassette-body">
+        <div class="cassette-window">
+          <div class="reel reel-l"><div class="reel-hub"></div></div>
+          <div class="reel reel-r"><div class="reel-hub"></div></div>
+        </div>
+        <div class="cassette-label">
+          <span class="mp-title">musica.mp3</span>
+        </div>
+      </div>
+      <button class="mp-toggle" aria-label="Tocar música"></button>
+      <div class="mp-progress"><div class="mp-progress-fill"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENSAGEM FINAL ============ -->
+<section class="section g-final">
+  <div class="container" data-reveal="scale">
+    <p class="g-final-text">
+      <!-- MENSAGEM FINAL -->
+      Escreva aqui a mensagem final para o Gabriel — direta,
+      sincera, sem excesso de floreio.
+    </p>
+    <span class="g-final-sign">fim do lado A</span>
+  </div>
+</section>
+
+<footer class="site-footer">feito com cuidado — para gabriel</footer>
+
+<script src="../js/common.js"></script>
+<script src="js/gabriel.js"></script>
+</body>
+</html>

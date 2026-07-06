@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TELA DE CARREGAMENTO -->
+  <div id="loader">
+    <div class="loader-glyph">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- CANVAS DE PARTÍCULAS AMBIENTES -->
+  <canvas id="particles"></canvas>
+
+  <!-- CAMADA DE TRANSIÇÃO CINEMATOGRÁFICA -->
+  <div id="transition-veil"></div>
+
+  <main id="gate">
+    <div class="glow-orb"></div>
+
+    <div class="gate-content">
+      <p class="eyebrow">um lugar guardado só para alguém</p>
+
+      <!-- TÍTULO -->
+      <h1 class="gate-title">Antes de começarmos<span class="dots">...</span></h1>
+
+      <!-- SUBTÍTULO -->
+      <p class="gate-subtitle">Digite seu nome.</p>
+
+      <form id="gate-form" autocomplete="off">
+        <div class="input-wrap">
+          <input
+            type="text"
+            id="name-input"
+            name="nome"
+            placeholder="seu nome aqui"
+            aria-label="Digite seu nome"
+            required
+          />
+          <div class="input-line"></div>
+        </div>
+
+        <button type="submit" id="continue-btn" class="btn-continue">
+          <span>Continuar</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <p class="gate-footnote">feito com cuidado, guardado com carinho</p>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

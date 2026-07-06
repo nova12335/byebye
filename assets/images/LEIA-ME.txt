@@ -1,0 +1,23 @@
+COMO ADICIONAR SUAS FOTOS
+=========================
+
+Coloque aqui os arquivos de imagem com estes nomes exatos
+para que apareçam automaticamente no site:
+
+  hero.jpg   -> foto principal (aparece no topo de cada página)
+  foto1.jpg  -> primeira foto da galeria
+  foto2.jpg  -> segunda foto da galeria
+  foto3.jpg  -> terceira foto da galeria
+  foto4.jpg  -> quarta foto da galeria
+
+Todas as páginas (maria, gabriel, yasmin, ana) usam os mesmos
+nomes de arquivo e a mesma pasta "assets/images". Se quiser fotos
+diferentes por pessoa, troque o caminho "src" no HTML da página
+correspondente (ex: pages/maria.html) para apontar para outra pasta.
+
+Enquanto as fotos não forem adicionadas, o site mostra
+automaticamente um quadro elegante no lugar, com o nome do
+espaço reservado (ex: "FOTO 1").
+
+Formatos aceitos: .jpg, .jpeg, .png, .webp
+(se usar outro formato, atualize a extensão no HTML da página)

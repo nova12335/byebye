@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Não encontrado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  #gate{ justify-content:center; }
+  .nf-title{ font-family: var(--font-display); font-style: italic; font-weight:300; font-size: clamp(1.7rem, 5vw, 2.6rem); max-width: 560px; line-height:1.4; }
+  .btn-back{ margin-top: 40px; }
+</style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div id="transition-veil"></div>
+
+  <main id="gate">
+    <div class="glow-orb"></div>
+    <div class="gate-content" style="opacity:1; transform:none;">
+      <p class="eyebrow">talvez não seja para você</p>
+      <h1 class="nf-title">Acho que essa página não foi feita para você.</h1>
+      <a href="../index.html" class="btn-continue btn-back">
+        <span>Voltar</span>
+      </a>
+    </div>
+  </main>
+
+  <script src="../js/script.js" defer></script>
+  <script>
+    // Continua a transição cinematográfica vinda da página anterior:
+    // o véu chega opaco e se dissolve suavemente ao carregar.
+    (function () {
+      const veil = document.getElementById('transition-veil');
+      if (!veil) return;
+      veil.classList.add('active');
+      requestAnimationFrame(() => {
+        setTimeout(() => veil.classList.remove('active'), 80);
+      });
+    })();
+  </script>
+</body>
+</html>

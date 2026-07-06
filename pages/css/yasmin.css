@@ -1,0 +1,224 @@
+/* ==========================================================================
+   YASMIN — VINTAGE ACADEMIA
+   Paleta: papel envelhecido, tinta marrom, vermelho de carimbo, dourado
+   ========================================================================== */
+:root{
+  --bg: #ece2c8;
+  --surface: #e3d6b4;
+  --text: #3a2c1d;
+  --dim: #7a6a4e;
+  --accent: #8a2f22;         /* vermelho de carimbo */
+  --accent-2: #b08d3f;       /* dourado envelhecido */
+  --accent-soft: rgba(138,47,34,0.08);
+  --line: rgba(58,44,29,0.22);
+  --radius: 2px;
+
+  --font-display: 'Libre Baskerville', serif;
+  --font-heading: 'Crimson Text', serif;
+  --font-body: 'Crimson Text', serif;
+  --font-caption: 'Special Elite', monospace;
+}
+
+body{
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(rgba(58,44,29,0.04) 1px, transparent 1px),
+    radial-gradient(rgba(58,44,29,0.03) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+}
+
+#transition-veil{ background: var(--bg); }
+#progress-bar{ background: var(--accent); }
+
+/* ---------- CARIMBO DECORATIVO ---------- */
+.y-stamp{
+  display:inline-block;
+  font-family: var(--font-caption);
+  font-size: 11px;
+  letter-spacing:.14em;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  padding: 14px 10px;
+  width: 84px; height: 84px;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  line-height:1.3;
+  transform: rotate(-9deg);
+  opacity: .75;
+  mix-blend-mode: multiply;
+  margin-bottom: 22px;
+}
+.y-stamp.small{ width:64px; height:64px; font-size:10px; padding:10px; }
+
+/* ---------- HERO ---------- */
+.y-hero{
+  min-height: 100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  position:relative;
+  padding: 100px 24px 60px;
+  text-align:center;
+  background:
+    linear-gradient(180deg, rgba(236,226,200,0) 70%, var(--bg) 100%),
+    var(--bg);
+}
+.y-hero-frame{
+  max-width: 520px;
+  display:flex; flex-direction:column; align-items:center;
+}
+.y-hero-photo{
+  width: 220px;
+  border: 10px solid #fdfaf0;
+  box-shadow: 0 10px 30px rgba(58,44,29,.25);
+  margin: 6px 0 26px;
+  transform: rotate(2deg);
+  filter: sepia(.25) contrast(1.02);
+}
+.y-hero-photo.img-placeholder{ border: 10px solid #fdfaf0; transform: rotate(2deg); }
+
+.y-title{
+  font-family: var(--font-display);
+  font-weight:700;
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  margin: 6px 0 12px;
+  color: var(--text);
+}
+.y-subtitle{
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--dim);
+}
+.eyebrow{ font-family: var(--font-caption); font-size:11px; }
+
+.y-scroll-cue{
+  position:absolute; bottom: 30px;
+  font-family: var(--font-caption);
+  font-size: 11px; letter-spacing:.1em;
+  color: var(--dim);
+  animation: cueFloat 2.4s ease-in-out infinite;
+}
+@keyframes cueFloat{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(6px); } }
+
+/* ---------- INTRO ---------- */
+.y-intro{ background: var(--bg); }
+.y-intro-inner{ max-width: 640px; }
+.y-dateline{
+  font-family: var(--font-caption);
+  font-size: 11px; letter-spacing:.12em;
+  color: var(--accent);
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+.y-intro-text{
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+/* ---------- GALERIA / POLAROIDS ---------- */
+.y-gallery-section{ background: var(--surface); }
+.y-h2{
+  font-family: var(--font-display);
+  font-weight:700;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  margin:0;
+  color: var(--text);
+}
+.y-gallery{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 20px;
+  padding-top: 20px;
+}
+.y-polaroid{
+  background: #fdfaf0;
+  padding: 14px 14px 26px;
+  box-shadow: 0 10px 22px rgba(58,44,29,.2);
+  margin:0;
+  transition: transform .4s ease;
+}
+.y-polaroid:hover{ transform: translateY(-6px) rotate(0deg) !important; }
+.y-polaroid img{ width:100%; filter: sepia(.2) contrast(1.02); }
+.y-polaroid figcaption{
+  font-family: var(--font-caption);
+  font-size: 11px;
+  text-align:center;
+  color: var(--dim);
+  padding-top: 12px;
+}
+.rot-1{ transform: rotate(-4deg); }
+.rot-2{ transform: rotate(3deg); }
+.rot-3{ transform: rotate(-2deg); }
+.rot-4{ transform: rotate(4deg); }
+
+@media (max-width: 780px){
+  .y-gallery{ grid-template-columns: repeat(2,1fr); }
+}
+
+/* ---------- LINHA DO TEMPO ---------- */
+.y-timeline-section{ background: var(--bg); }
+.y-timeline{
+  list-style:none; margin:0; padding:0;
+  max-width: 640px; margin-inline:auto;
+}
+.y-timeline li{
+  display:flex; gap: 22px;
+  padding: 20px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.y-tl-year{
+  font-family: var(--font-display);
+  font-weight:700;
+  color: var(--accent);
+  width: 40px; flex-shrink:0;
+}
+.y-tl-text{ margin:0; color: var(--dim); line-height:1.65; font-size:1.05rem; }
+
+/* ---------- CARTÕES ---------- */
+.y-cards-section{ background: var(--surface); }
+.y-cards{ display:grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.y-card{
+  background: #fdfaf0;
+  border: 1px solid var(--line);
+  padding: 30px 24px;
+  position:relative;
+}
+.y-card-mark{
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--accent);
+  display:block;
+  margin-bottom: 10px;
+}
+.y-card h3{ font-family: var(--font-display); font-size: 1.05rem; margin: 0 0 10px; color: var(--text); }
+.y-card p{ color: var(--dim); font-size: .95rem; line-height:1.6; margin:0; }
+
+@media (max-width: 780px){
+  .y-cards{ grid-template-columns: 1fr; }
+}
+
+/* ---------- MÚSICA ---------- */
+.y-music-section{ background: var(--bg); text-align:center; }
+.y-music-inner{ display:flex; flex-direction:column; align-items:center; gap:22px; }
+
+/* ---------- FINAL ---------- */
+.y-final{ background: var(--surface); text-align:center; }
+.y-final-page{
+  max-width: 620px; margin: 0 auto;
+  background: #fdfaf0;
+  padding: 60px 40px;
+  box-shadow: 0 12px 30px rgba(58,44,29,.2);
+  display:flex; flex-direction:column; align-items:center;
+}
+.y-final-text{
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height:1.75;
+  color: var(--text);
+  margin: 6px 0 20px;
+}
+.y-final-sign{ font-family: var(--font-caption); font-size: 12px; color: var(--dim); }
