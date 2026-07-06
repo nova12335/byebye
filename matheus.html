@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matheus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/matheus.css">
+</head>
+<body>
+
+<div id="transition-veil"></div>
+
+<main class="mt-page">
+  <div class="mt-emoji-rain" id="emoji-rain" aria-hidden="true"></div>
+
+  <div class="mt-card">
+    <span class="mt-tag">🚨 FLAGRADO 🚨</span>
+
+    <!-- TÍTULO / FRASE -->
+    <h1 class="mt-title">ah safado, tentou ver meu nome?</h1>
+    <p class="mt-subtitle">não pode.</p>
+
+    <!-- MEME PLACEHOLDER -->
+    <div class="mt-meme-frame">
+      <img
+        src="../assets/images/meme-matheus.jpg"
+        alt="Meme do Matheus"
+        data-placeholder-label="COLOQUE SEU MEME AQUI — meme-matheus.jpg"
+        data-ratio="1/1"
+        id="meme-img"
+      >
+    </div>
+
+    <p class="mt-caption">essa é a única memória que você ganha hoje</p>
+
+    <a href="../index.html" class="mt-btn">tentar de novo (não vai adiantar)</a>
+  </div>
+</main>
+
+<script>
+  // Fade de entrada simples (sem exigir o common.js, essa página é só zoeira).
+  window.addEventListener('load', () => {
+    const veil = document.getElementById('transition-veil');
+    if (veil) setTimeout(() => veil.classList.add('veil-hidden'), 100);
+  });
+
+  // Fallback do meme: se a imagem não existir, mostra um placeholder divertido.
+  document.getElementById('meme-img').addEventListener('error', function () {
+    const label = this.dataset.placeholderLabel || 'meme';
+    const wrap = document.createElement('div');
+    wrap.className = 'mt-meme-placeholder';
+    wrap.innerHTML = `<span>🖼️</span><p>${label}</p>`;
+    this.replaceWith(wrap);
+  }, { once: true });
+
+  // Chuvinha de emojis de zoeira caindo no fundo.
+  (function emojiRain(){
+    const container = document.getElementById('emoji-rain');
+    const emojis = ['😂','👀','🚫','🤡','😳'];
+    for (let i = 0; i < 26; i++){
+      const span = document.createElement('span');
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      span.style.left = Math.random() * 100 + 'vw';
+      span.style.animationDuration = (6 + Math.random() * 6) + 's';
+      span.style.animationDelay = (Math.random() * 6) + 's';
+      span.style.fontSize = (14 + Math.random() * 18) + 'px';
+      container.appendChild(span);
+    }
+  })();
+</script>
+</body>
+</html>
