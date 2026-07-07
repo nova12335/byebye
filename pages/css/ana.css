@@ -3,14 +3,14 @@
    Paleta: creme, rosa suave, branco, dourado quente
    ========================================================================== */
 :root{
-  --bg: #fbf1e7;
-  --surface: #fce7e4;
-  --text: #5a3d35;
-  --dim: #9c7d72;
-  --accent: #d9899a;         /* rosa quente */
-  --accent-2: #d9a05b;       /* dourado */
-  --accent-soft: rgba(217,137,154,0.14);
-  --line: rgba(90,61,53,0.14);
+  --bg:#07070b;
+  --surface:#12121b;
+  --text:#f5f1ff;
+  --dim:#b6acd7;
+  --accent:#9b5cff;
+  --accent-2:#c78cff;
+  --accent-soft:rgba(155,92,255,.16);
+  --line:rgba(155,92,255,.18);
   --radius: 10px;
 
   --font-display: 'Caveat', cursive;
@@ -182,3 +182,63 @@
   font-size: 24px;
   color: var(--accent);
 }
+
+
+/* ===== SKZ THEME ===== */
+body{
+background:
+radial-gradient(circle at top,#2c1453 0%,transparent 45%),
+linear-gradient(#07070b,#0b0b12);
+color:var(--text);
+overflow-x:hidden;
+}
+
+body::before,
+body::after{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-2;
+background-repeat:no-repeat;
+background-size:320px;
+opacity:.06;
+filter:blur(1px);
+}
+
+body::before{
+background-image:url("../assets/images/skz.png"),url("../assets/images/skz2.png");
+background-position:left -90px top 140px,right -90px bottom 80px;
+}
+
+body::after{
+background-image:url("../assets/images/skz3.png"),url("../assets/images/skz4.png");
+background-position:right -100px top 180px,left -100px bottom 120px;
+}
+
+.purple-glow{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-3;
+background:
+radial-gradient(circle at 15% 20%,rgba(155,92,255,.18),transparent 35%),
+radial-gradient(circle at 85% 30%,rgba(199,140,255,.12),transparent 30%),
+radial-gradient(circle at 50% 100%,rgba(120,70,255,.16),transparent 40%);
+}
+
+#hearts{filter:hue-rotate(250deg) saturate(1.7) brightness(1.2);}
+
+.a-hero{background:linear-gradient(180deg,#191226,#07070b);}
+.a-hero-fade{background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(7,7,11,.75),#07070b);}
+.a-title{text-shadow:0 0 15px rgba(155,92,255,.45),0 0 35px rgba(155,92,255,.2);}
+.a-card,.a-polaroid,.music-player{
+background:rgba(22,22,32,.82)!important;
+border:1px solid rgba(155,92,255,.15);
+backdrop-filter:blur(14px);
+box-shadow:0 0 25px rgba(155,92,255,.12);
+}
+.a-intro,.a-timeline-section,.a-music-section{background:var(--bg);}
+.a-gallery-section,.a-cards-section,.a-final{background:var(--surface);}
+.a-final{background:linear-gradient(#12121b,#07070b);}
+::selection{background:#9b5cff;color:#fff;}
