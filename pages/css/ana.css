@@ -220,7 +220,7 @@ background-position:left -90px top 140px,right -90px bottom 80px;
 }
 
 body::after{
-background-image:url("../assets/images/skz3.png"),url("../assets/images/skz4.png");
+background-image:url("../assets/images/skz3.png"),url("../assets/images/skz1.png");
 background-position:right -100px top 180px,left -100px bottom 120px;
 animation-duration: 20s;
 animation-direction: reverse;
