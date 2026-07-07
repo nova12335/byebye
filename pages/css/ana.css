@@ -110,7 +110,6 @@
   margin:0;
   transition: transform .45s ease;
 }
-.a-polaroid:hover{ transform: translateY(-6px) rotate(0deg) !important; }
 .a-polaroid img{ width:100%; border-radius: 2px; }
 .a-polaroid figcaption{
   font-family: var(--font-caption);
@@ -242,3 +241,28 @@ box-shadow:0 0 25px rgba(155,92,255,.12);
 .a-gallery-section,.a-cards-section,.a-final{background:var(--surface);}
 .a-final{background:linear-gradient(#12121b,#07070b);}
 ::selection{background:#9b5cff;color:#fff;}
+
+/* ===== TILT + PROFUNDIDADE NO HOVER ===== */
+.a-gallery, .a-cards{ perspective: 1000px; }
+
+.a-polaroid, .a-card{
+  transition: transform .25s ease, box-shadow .25s ease;
+  will-change: transform;
+}
+.a-polaroid:hover, .a-card:hover{
+  box-shadow: 0 22px 42px rgba(155,92,255,.28);
+}
+
+/* ===== FUNDO SKZ MAIS VIVO (flutuando devagar) ===== */
+body::before, body::after{
+  opacity: .1;
+  animation: skzFloat 16s ease-in-out infinite;
+}
+body::after{
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+@keyframes skzFloat{
+  0%,100%{ transform: translate(0,0) scale(1); }
+  50%{ transform: translate(14px,-20px) scale(1.03); }
+}
