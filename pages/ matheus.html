@@ -1,75 +1,474 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matheus</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/matheus.css">
-</head>
-<body>
+/* ============================================================
+   MATHEUS — dossiê cinza
+   Tokens
+   bg-deep    #101011
+   bg-panel   #17181a
+   paper      #1d1e21
+   line       #35363a
+   line-soft  #26272a
+   ink        #eceeef
+   ink-muted  #9a9ca1
+   ink-faint  #616469
+   ============================================================ */
 
-<div id="transition-veil"></div>
+* { box-sizing: border-box; }
 
-<main class="mt-page">
-  <div class="mt-emoji-rain" id="emoji-rain" aria-hidden="true"></div>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #101011;
+  color: #eceeef;
+  min-height: 100%;
+}
 
-  <div class="mt-card">
-    <span class="mt-tag">🚨 FLAGRADO 🚨</span>
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-    <!-- TÍTULO / FRASE -->
-    <h1 class="mt-title">ah safado, tentou ver meu nome?</h1>
-    <p class="mt-subtitle">não pode.</p>
+/* leve grão de papel/estática sobre tudo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-    <!-- MEME PLACEHOLDER -->
-    <div class="mt-meme-frame">
-      <img
-        src="../assets/images/meme-matheus.jpg"
-        alt="Meme do Matheus"
-        data-placeholder-label="COLOQUE SEU MEME AQUI — meme-matheus.jpg"
-        data-ratio="1/1"
-        id="meme-img"
-      >
-    </div>
+/* vinheta sutil */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,0.55) 100%);
+}
 
-    <p class="mt-caption">essa é a única memória que você ganha hoje</p>
+#ash-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
 
-    <a href="../index.html" class="mt-btn">tentar de novo (não vai adiantar)</a>
-  </div>
-</main>
+#transition-veil {
+  position: fixed;
+  inset: 0;
+  background: #101011;
+  z-index: 50;
+  transition: opacity 0.9s ease;
+}
+#transition-veil.veil-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
-<script>
-  // Fade de entrada simples (sem exigir o common.js, essa página é só zoeira).
-  window.addEventListener('load', () => {
-    const veil = document.getElementById('transition-veil');
-    if (veil) setTimeout(() => veil.classList.add('veil-hidden'), 100);
-  });
+/* ---------------------------------------------------------- */
+/* layout                                                       */
+/* ---------------------------------------------------------- */
 
-  // Fallback do meme: se a imagem não existir, mostra um placeholder divertido.
-  document.getElementById('meme-img').addEventListener('error', function () {
-    const label = this.dataset.placeholderLabel || 'meme';
-    const wrap = document.createElement('div');
-    wrap.className = 'mt-meme-placeholder';
-    wrap.innerHTML = `<span>🖼️</span><p>${label}</p>`;
-    this.replaceWith(wrap);
-  }, { once: true });
+.mt-page {
+  position: relative;
+  z-index: 4;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+}
 
-  // Chuvinha de emojis de zoeira caindo no fundo.
-  (function emojiRain(){
-    const container = document.getElementById('emoji-rain');
-    const emojis = ['😂','👀','🚫','🤡','😳'];
-    for (let i = 0; i < 26; i++){
-      const span = document.createElement('span');
-      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      span.style.left = Math.random() * 100 + 'vw';
-      span.style.animationDuration = (6 + Math.random() * 6) + 's';
-      span.style.animationDelay = (Math.random() * 6) + 's';
-      span.style.fontSize = (14 + Math.random() * 18) + 'px';
-      container.appendChild(span);
-    }
-  })();
-</script>
-</body>
-</html>
+.mt-doc {
+  width: 100%;
+  max-width: 720px;
+  background: linear-gradient(180deg, #1a1b1d 0%, #17181a 100%);
+  border: 1px solid #2c2d30;
+  border-radius: 4px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.03) inset,
+    0 30px 60px -20px rgba(0,0,0,0.7);
+  padding: 40px 44px 34px;
+}
+
+@media (max-width: 560px) {
+  .mt-doc { padding: 28px 22px 24px; }
+}
+
+.mt-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #35363a 15%, #35363a 85%, transparent);
+  margin: 24px 0;
+}
+
+/* ---------------------------------------------------------- */
+/* cabeçalho de processo                                        */
+/* ---------------------------------------------------------- */
+
+.mt-doc-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #74767b;
+  text-transform: uppercase;
+}
+
+.mt-case { color: #8b8d92; }
+
+.mt-status {
+  color: #cfd1d4;
+  padding: 3px 9px;
+  border: 1px solid #3a3b3f;
+  border-radius: 2px;
+  background: #1f2022;
+}
+
+/* ---------------------------------------------------------- */
+/* eyebrow / título / subtítulo                                 */
+/* ---------------------------------------------------------- */
+
+.mt-eyebrow {
+  margin: 0 0 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #77797e;
+}
+
+.mt-title {
+  font-family: 'Anton', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(34px, 6vw, 54px);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: #f1f2f3;
+  margin: 0 0 14px;
+}
+
+.mt-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(17px, 2.4vw, 21px);
+  line-height: 1.5;
+  color: #a9abaf;
+  margin: 0 0 28px;
+  max-width: 52ch;
+}
+
+/* ---------------------------------------------------------- */
+/* corpo: evidência + texto                                     */
+/* ---------------------------------------------------------- */
+
+.mt-body-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 560px) {
+  .mt-body-grid { grid-template-columns: 1fr; }
+}
+
+.mt-evidence {
+  margin: 0;
+  position: relative;
+}
+
+.mt-evidence-tag {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #6c6e73;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mt-meme-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #1c1d20;
+  border: 1px solid #333438;
+  border-radius: 3px;
+  overflow: hidden;
+  filter: grayscale(1) contrast(1.05);
+}
+
+.mt-meme-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mt-meme-placeholder {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #1c1d20;
+  border: 1px dashed #3a3b3f;
+  border-radius: 3px;
+  color: #6c6e73;
+  text-align: center;
+  padding: 12px;
+}
+.mt-meme-placeholder span { font-size: 26px; opacity: 0.6; }
+.mt-meme-placeholder p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.mt-caption {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: #7c7e83;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+}
+
+.mt-statement {
+  padding-top: 2px;
+}
+
+.mt-paragraph {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #c4c6c9;
+  margin: 0 0 14px;
+}
+
+.mt-paragraph--muted {
+  color: #83858a;
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------- */
+/* editable placeholders — texto que o usuário troca             */
+/* ---------------------------------------------------------- */
+
+.mt-editable {
+  border-bottom: 1px dashed #45464b;
+}
+
+/* ---------------------------------------------------------- */
+/* trilha sonora + carimbo (elemento assinatura)                */
+/* ---------------------------------------------------------- */
+
+.mt-seal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (max-width: 480px) {
+  .mt-seal-row { flex-direction: column; align-items: flex-start; }
+}
+
+.mt-seal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mt-seal-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6c6e73;
+}
+
+.mt-seal-track {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: #b7b9bd;
+}
+
+.mt-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  margin-top: 2px;
+}
+.mt-eq span {
+  width: 3px;
+  height: 4px;
+  background: #55575c;
+  border-radius: 1px;
+  transition: background 0.3s ease;
+}
+.mt-eq.is-playing span {
+  background: #cfd1d4;
+  animation: eqbounce 900ms ease-in-out infinite;
+}
+.mt-eq.is-playing span:nth-child(1) { animation-delay: 0ms; }
+.mt-eq.is-playing span:nth-child(2) { animation-delay: 120ms; }
+.mt-eq.is-playing span:nth-child(3) { animation-delay: 240ms; }
+.mt-eq.is-playing span:nth-child(4) { animation-delay: 80ms; }
+.mt-eq.is-playing span:nth-child(5) { animation-delay: 200ms; }
+
+@keyframes eqbounce {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+/* o carimbo */
+.mt-stamp {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mt-stamp-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #6c6e73;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.mt-stamp.is-stamped .mt-stamp-ring {
+  opacity: 1;
+  animation: ringpulse 1.8s ease-out infinite;
+}
+@keyframes ringpulse {
+  0%   { transform: scale(0.9); opacity: 0.55; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+.mt-stamp-face {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 35% 30%, #2a2b2e, #1a1b1d 70%);
+  border: 2px solid #4a4b4f;
+  transform: rotate(-8deg) scale(1);
+  transition: transform 220ms cubic-bezier(.34,1.56,.64,1), border-color 220ms ease, box-shadow 220ms ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+.mt-stamp:hover .mt-stamp-face {
+  border-color: #6c6e73;
+}
+
+.mt-stamp.is-stamped .mt-stamp-face {
+  transform: rotate(-8deg) scale(0.86);
+  border-color: #8b8d92;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 0 0 3px rgba(236,238,239,0.06);
+}
+
+.mt-stamp-text {
+  font-family: 'Anton', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #8f9195;
+  text-transform: uppercase;
+  transition: color 220ms ease;
+}
+.mt-stamp.is-stamped .mt-stamp-text {
+  color: #e7e8ea;
+}
+
+.mt-stamp:focus-visible .mt-stamp-face {
+  outline: 2px solid #cfd1d4;
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------- */
+/* rodapé / assinatura                                          */
+/* ---------------------------------------------------------- */
+
+.mt-doc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.mt-sign {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mt-sign-line {
+  width: 150px;
+  height: 1px;
+  background: #45464b;
+}
+
+.mt-sign-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #85878c;
+}
+
+.mt-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border: 1px solid #45464b;
+  border-radius: 3px;
+  color: #d3d4d7;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.mt-btn:hover {
+  background: #202123;
+  border-color: #6c6e73;
+  transform: translateY(-1px);
+}
+
+.mt-btn:focus-visible {
+  outline: 2px solid #cfd1d4;
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------- */
+/* acessibilidade                                                */
+/* ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
